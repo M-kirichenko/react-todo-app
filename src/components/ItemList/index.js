@@ -1,2 +1,2 @@
-import App from './ItemList';
-export default App;
+import ItemList from './ItemList';
+export default ItemList;
