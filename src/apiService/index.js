@@ -6,14 +6,14 @@ export default class Api {
     this._apibase = apiUrl;
   }
   
-  all = async() => {
+  async all () {
     const res = await axios.get(this._apibase);
 
     if(res.status === 200) return res.data;
     else throw new Error(`${this.errMsg} ${this._apibase}`);
   }
 
-  make = async(todo) => {
+  async make(todo) {
     const res = await axios.post(this._apibase, todo);
     
     if(res.status === 200) return res.data;
