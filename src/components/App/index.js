@@ -21,10 +21,15 @@ const App = () => {
     if (created) getAll(); // res status is checked in apiService
   };
 
+  const updateItem = async (id, fieldsObj) => {
+    const updated = await api.update(id, { ...fieldsObj });
+    if (updated) getAll(); // res status is checked in apiService
+  };
+
   return (
     <div id="to-do-list">
       <AddInput onItemAdd={newTodo} />
-      <ItemList todos={todoList} />
+      <ItemList todos={todoList} onItemChange={updateItem} />
     </div>
   );
 };
