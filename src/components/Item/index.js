@@ -1,7 +1,7 @@
 import React from 'react';
 import './item.css';
 
-const item = ({ todo, onItemChange }) => {
+const item = ({ todo, onItemChange, onItemDelete }) => {
   const { id, text, isCheck } = todo;
   return (
     <li>
@@ -9,7 +9,11 @@ const item = ({ todo, onItemChange }) => {
         <span className="edit-icon">
           <i className="fa fa-edit" />
         </span>
-        <span className="delete-icon">
+        <span
+          className="delete-icon"
+          onClick={() => onItemDelete(id)}
+          aria-hidden="true"
+        >
           <i className="fa fa-trash-o" />
         </span>
       </div>
