@@ -1,0 +1,46 @@
+.to-do-text {
+  flex-basis: 80%;
+  text-align: center;
+  border: none;
+  outline: none;
+  margin: 0 10px;
+}
+
+.to-do-text:focus {
+  border-bottom: 1px solid black;
+}
+
+.edit-delete {
+  flex-basis: 15%;
+}
+
+.edit-delete span,
+.done span {
+  margin: 0 5px;
+}
+
+.done {
+  text-align: right;
+  flex-basis: 10%;
+}
+
+.edit-delete,
+.done {
+  font-size: 22px;
+}
+
+.edit-icon,
+.delete-icon,
+.undo-icon {
+  cursor: pointer;
+}
+
+.to-do-done {
+  text-decoration: line-through;
+}
+
+.done-check {
+  cursor: pointer;
+  width: 70%;
+  height: 70%;
+}

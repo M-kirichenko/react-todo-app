@@ -1,0 +1,28 @@
+#to-do-add-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+#to-do-input {
+  flex-basis: 80%;
+  height: 36px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+  padding: 0;
+}
+
+#to-do-add {
+  flex-basis: 15%;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  transition: 1s;
+}
+
+#to-do-add:hover {
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+}
