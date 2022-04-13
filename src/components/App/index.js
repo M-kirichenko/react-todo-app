@@ -23,13 +23,22 @@ const App = () => {
 
   const updateItem = async (id, fieldsObj) => {
     const updated = await api.update(id, { ...fieldsObj });
-    if (updated) getAll(); // res status is checked in apiService
+    if (updated) getAll();
+  };
+
+  const deleteItem = async (id) => {
+    const deleted = await api.delete(id);
+    if (deleted) getAll();
   };
 
   return (
     <div id="to-do-list">
       <AddInput onItemAdd={newTodo} />
-      <ItemList todos={todoList} onItemChange={updateItem} />
+      <ItemList
+        todos={todoList}
+        onItemChange={updateItem}
+        onItemDelete={deleteItem}
+      />
     </div>
   );
 };
