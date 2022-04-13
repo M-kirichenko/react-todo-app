@@ -1,8 +1,8 @@
 import React from 'react';
 import './item.css';
 
-const item = ({ todo }) => {
-  const { text, isCheck } = todo;
+const item = ({ todo, onItemChange }) => {
+  const { id, text, isCheck } = todo;
   return (
     <li>
       <div className="edit-delete">
@@ -19,6 +19,9 @@ const item = ({ todo }) => {
           type="checkbox"
           className="done-check"
           defaultChecked={isCheck}
+          onChange={({ target }) =>
+            onItemChange(id, { isCheck: target.checked })
+          }
         />
       </div>
     </li>
