@@ -20,4 +20,11 @@ export default class Api {
     if (res.status === 200) return res.data;
     throw new Error(`${this.errMsg} ${this.apibase}`);
   }
+
+  async update(id, todo) {
+    const res = await axios.patch(`${this.apibase}/${id}`, todo);
+
+    if (res.status === 200) return res.data;
+    throw new Error(`${this.errMsg} ${this.apibase}`);
+  }
 }

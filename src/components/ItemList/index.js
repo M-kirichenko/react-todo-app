@@ -7,9 +7,10 @@ const itemList = ({ todos }) => {
 
   return (
     <ul>
-      {todos.map((todo) => (
-        <Item todo={todo} key={`todo-${todo.id}`} />
-      ))}
+      {todos.map((todo) => {
+        const { id } = todo;
+        return <Item todo={todo} key={`todo-${id}`} />;
+      })}
     </ul>
   );
 };

@@ -9,12 +9,12 @@
   border: none;
   outline: none;
   border-bottom: 1px solid black;
-  padding: 0px;
+  padding: 0;
 }
 
 #to-do-add {
   flex-basis: 15%;
-  border:none;
+  border: none;
   cursor: pointer;
   background-color: black;
   color: white;

@@ -4,7 +4,7 @@ import ItemList from '../ItemList';
 import Api from '../../apiService';
 import './app.css';
 
-function App() {
+const App = () => {
   const [todoList, setTodoList] = useState([]);
   const api = new Api('http://localhost:8000/api/todos');
 
@@ -27,6 +27,6 @@ function App() {
       <ItemList todos={todoList} />
     </div>
   );
-}
+};
 
 export default App;

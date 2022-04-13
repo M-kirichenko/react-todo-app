@@ -14,7 +14,8 @@
   flex-basis: 15%;
 }
 
-.edit-delete span, .done span {
+.edit-delete span,
+.done span {
   margin: 0 5px;
 }
 
@@ -23,11 +24,14 @@
   flex-basis: 10%;
 }
 
-.edit-delete, .done {
+.edit-delete,
+.done {
   font-size: 22px;
 }
 
-.edit-icon, .delete-icon, .undo-icon {
+.edit-icon,
+.delete-icon,
+.undo-icon {
   cursor: pointer;
 }
 

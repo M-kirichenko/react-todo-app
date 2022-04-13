@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './addInput.css';
 
-function AddInput({ onItemAdd }) {
+const AddInput = ({ onItemAdd }) => {
   const [inputVal, setInputVal] = useState('');
   const [err, setErr] = useState(null);
 
@@ -32,7 +32,7 @@ function AddInput({ onItemAdd }) {
       </div>
     </>
   );
-}
+};
 
 AddInput.defaultProps = {
   onItemAdd: false,
