@@ -7,9 +7,11 @@ const item = ({ todo, onItemChange, onItemDelete }) => {
   return (
     <li>
       <div className="edit-delete">
-        <Link className="edit-icon" to={`/${id}`}>
-          <i className="fa fa-edit" />
-        </Link>
+        {!isCheck && (
+          <Link className="edit-icon" to={`/${id}`}>
+            <i className="fa fa-edit" />
+          </Link>
+        )}
         <span
           className="delete-icon"
           onClick={() => onItemDelete(id)}
