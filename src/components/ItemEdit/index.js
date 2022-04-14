@@ -7,7 +7,7 @@ import './itemEdit.css';
 const ItemEdit = () => {
   const [itemText, setItem] = useState(null);
   const [inputText, setInputText] = useState(null);
-  const [msg, setMsg] = useState([]);
+  const [msg, setMsg] = useState(null);
   const api = new Api();
 
   const { id } = useParams();
@@ -36,7 +36,7 @@ const ItemEdit = () => {
   if (!itemText) return 'no data';
   return (
     <>
-      {msg.length && (
+      {msg && (
         <div id={msg[0] === 'success' ? 'success-msg' : 'msg'}>{msg[1]}</div>
       )}
       <input
