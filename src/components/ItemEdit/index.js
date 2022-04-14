@@ -36,7 +36,7 @@ const ItemEdit = () => {
   if (!itemText) return 'no data';
   return (
     <>
-      {msg && (
+      {msg.length && (
         <div id={msg[0] === 'success' ? 'success-msg' : 'msg'}>{msg[1]}</div>
       )}
       <input
