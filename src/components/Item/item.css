@@ -35,6 +35,11 @@
   cursor: pointer;
 }
 
+.edit-icon {
+  text-decoration: none;
+  color: black;
+}
+
 .to-do-done {
   text-decoration: line-through;
 }
