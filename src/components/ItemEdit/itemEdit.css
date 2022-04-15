@@ -1,0 +1,18 @@
+#itemText {
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid black;
+  outline: 0;
+  padding-bottom: 2.5px;
+}
+
+.edit-page-icons {
+  font-size: 22px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.edit-page-icons:last-child {
+  text-decoration: none;
+  color: black;
+}

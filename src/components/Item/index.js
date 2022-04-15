@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './item.css';
 
 const item = ({ todo, onItemChange, onItemDelete }) => {
@@ -6,9 +7,11 @@ const item = ({ todo, onItemChange, onItemDelete }) => {
   return (
     <li>
       <div className="edit-delete">
-        <span className="edit-icon">
-          <i className="fa fa-edit" />
-        </span>
+        {!isCheck && (
+          <Link className="edit-icon" to={`/${id}`}>
+            <i className="fa fa-edit" />
+          </Link>
+        )}
         <span
           className="delete-icon"
           onClick={() => onItemDelete(id)}

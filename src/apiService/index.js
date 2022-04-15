@@ -3,8 +3,8 @@ import axios from 'axios';
 export default class Api {
   errMsg = "Coudn't fetch";
 
-  constructor(apiUrl) {
-    this.apibase = apiUrl;
+  constructor() {
+    this.apibase = 'http://localhost:8000/api/todos';
   }
 
   msg(res) {
@@ -29,6 +29,11 @@ export default class Api {
 
   async delete(id) {
     const res = await axios.delete(`${this.apibase}/${id}`);
+    return this.msg(res);
+  }
+
+  async getOne(id) {
+    const res = await axios.get(`${this.apibase}/${id}`);
     return this.msg(res);
   }
 }
