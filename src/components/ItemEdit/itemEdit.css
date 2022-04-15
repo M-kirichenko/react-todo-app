@@ -12,11 +12,6 @@
   margin: 5px;
 }
 
-#success-msg {
-  text-align: center;
-  color: green;
-}
-
 .edit-page-icons:last-child {
   text-decoration: none;
   color: black;

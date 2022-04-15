@@ -1,44 +1,40 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Api from '../../apiService';
 import './itemEdit.css';
 
+let prevValue;
 const ItemEdit = () => {
-  const [itemText, setItem] = useState(null);
-  const [inputText, setInputText] = useState(null);
+  const [inputText, setInputText] = useState('');
   const [msg, setMsg] = useState(null);
   const api = new Api();
-
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     api.getOne(id).then((data) => {
-      setItem(data.text);
+      prevValue = data.text;
       setInputText(data.text);
     });
   }, []);
 
   const updateItemText = async (itemId, newText) => {
-    if (inputText === itemText) setMsg(['error', 'no changes']);
-    else if (!inputText.length) setMsg(['error', "input text can't be emty!"]);
-    else {
+    if (!inputText.trim().length) setMsg("input text can't be emty!");
+    else if (inputText === prevValue) {
+      navigate('/');
+    } else {
       const updated = await api.update(itemId, { text: newText });
-      if (updated) {
-        setMsg(['success', 'saved']);
-        setItem(newText);
-        setInputText(newText);
-      }
+      if (updated) navigate('/');
     }
   };
-  const undo = () => setInputText(itemText);
 
-  if (!itemText) return 'no data';
+  const undo = () => setInputText(prevValue);
+
+  if (!inputText && !prevValue) return 'no data';
   return (
     <>
-      {msg && (
-        <div id={msg[0] === 'success' ? 'success-msg' : 'msg'}>{msg[1]}</div>
-      )}
+      {msg && <div id="msg">{msg}</div>}
       <input
         type="text"
         value={inputText}
