@@ -4,13 +4,13 @@ import './itemList.css';
 import DataContext from '../../dataContext';
 
 const ItemList = () => {
-  const data = useContext(DataContext);
+  const { todoList } = useContext(DataContext);
 
-  if (!data.todoList.length) return 'No data';
+  if (!todoList.length) return 'No data';
 
   return (
     <ul>
-      {data.todoList.map((todo) => (
+      {todoList.map((todo) => (
         <Item todo={todo} key={`todo-${todo.id}`} />
       ))}
     </ul>

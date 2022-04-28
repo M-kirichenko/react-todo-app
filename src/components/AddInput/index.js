@@ -3,14 +3,14 @@ import DataContext from '../../dataContext';
 import './addInput.css';
 
 const AddInput = () => {
-  const data = useContext(DataContext);
+  const { api, setTodoList } = useContext(DataContext);
 
   const [inputVal, setInputVal] = useState('');
   const [err, setErr] = useState(null);
 
   const newTodo = async (text) => {
-    const dataAfterCreated = await data.api.make({ text });
-    data.setTodoList(dataAfterCreated);
+    const dataAfterCreated = await api.make({ text });
+    setTodoList(dataAfterCreated);
   };
 
   const save = () => {

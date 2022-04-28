@@ -1,11 +1,21 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import './item.css';
 import DataContext from '../../dataContext';
+import './item.css';
 
 const Item = ({ todo }) => {
-  const data = useContext(DataContext);
+  const { api, setTodoList } = useContext(DataContext);
+
+  const updateItem = async (id, fieldsObj) => {
+    const dataAfterUpdated = await api.update(id, { ...fieldsObj });
+    setTodoList(dataAfterUpdated);
+  };
+
+  const deleteItem = async (id) => {
+    const dataAfterDeleted = await api.delete(id);
+    setTodoList(dataAfterDeleted);
+  };
 
   const { id, text, isCheck } = todo;
   return (
@@ -18,7 +28,7 @@ const Item = ({ todo }) => {
         )}
         <span
           className="delete-icon"
-          onClick={() => data.deleteItem(id)}
+          onClick={() => deleteItem(id)}
           aria-hidden="true"
         >
           <i className="fa fa-trash-o" />
@@ -30,9 +40,7 @@ const Item = ({ todo }) => {
           type="checkbox"
           className="done-check"
           defaultChecked={isCheck}
-          onChange={({ target }) =>
-            data.updateItem(id, { isCheck: target.checked })
-          }
+          onChange={({ target }) => updateItem(id, { isCheck: target.checked })}
         />
       </div>
     </li>

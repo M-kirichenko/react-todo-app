@@ -13,25 +13,13 @@ const api = new Api();
 const App = () => {
   const [todoList, setTodoList] = useState([]);
 
-  const updateItem = async (id, fieldsObj) => {
-    const dataAfterUpdated = await api.update(id, { ...fieldsObj });
-    setTodoList(dataAfterUpdated);
-  };
-
-  const deleteItem = async (id) => {
-    const dataAfterDeleted = await api.delete(id);
-    setTodoList(dataAfterDeleted);
-  };
-
   useEffect(() => {
     api.all().then((data) => setTodoList(data));
   }, []);
 
   return (
     <div id="to-do-list">
-      <DataContext.Provider
-        value={{ setTodoList, todoList, updateItem, deleteItem, api }}
-      >
+      <DataContext.Provider value={{ setTodoList, todoList, api }}>
         <Router>
           <Routes>
             <Route
