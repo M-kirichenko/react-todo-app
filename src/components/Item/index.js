@@ -1,8 +1,12 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './item.css';
+import DataContext from '../../dataContext';
 
-const item = ({ todo, onItemChange, onItemDelete }) => {
+const Item = ({ todo }) => {
+  const data = useContext(DataContext);
+
   const { id, text, isCheck } = todo;
   return (
     <li>
@@ -14,7 +18,7 @@ const item = ({ todo, onItemChange, onItemDelete }) => {
         )}
         <span
           className="delete-icon"
-          onClick={() => onItemDelete(id)}
+          onClick={() => data.deleteItem(id)}
           aria-hidden="true"
         >
           <i className="fa fa-trash-o" />
@@ -27,7 +31,7 @@ const item = ({ todo, onItemChange, onItemDelete }) => {
           className="done-check"
           defaultChecked={isCheck}
           onChange={({ target }) =>
-            onItemChange(id, { isCheck: target.checked })
+            data.updateItem(id, { isCheck: target.checked })
           }
         />
       </div>
@@ -35,4 +39,4 @@ const item = ({ todo, onItemChange, onItemDelete }) => {
   );
 };
 
-export default item;
+export default Item;

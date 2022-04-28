@@ -1,21 +1,23 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Api from '../../apiService';
+import DataContext from '../../dataContext';
 import './itemEdit.css';
 
 let prevValue;
 const ItemEdit = () => {
+  const data = useContext(DataContext);
+
   const [inputText, setInputText] = useState('');
   const [msg, setMsg] = useState(null);
-  const api = new Api();
   const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.getOne(id).then((data) => {
-      prevValue = data.text;
-      setInputText(data.text);
+    data.api.getOne(id).then((todo) => {
+      prevValue = todo.text;
+      setInputText(todo.text);
     });
   }, []);
 
@@ -24,8 +26,8 @@ const ItemEdit = () => {
     else if (inputText === prevValue) {
       navigate('/');
     } else {
-      const updated = await api.update(itemId, { text: newText });
-      if (updated) navigate('/');
+      data.updateItem(itemId, { text: newText });
+      navigate('/');
     }
   };
 
